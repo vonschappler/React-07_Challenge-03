@@ -23,21 +23,25 @@ const greeting = {
   evening: "Good Evening"
 };
 
+const customStyle = {
+  color: ''
+}
+
 ReactDom.render(
-  <h1 id="h1" className="heading morning">
+  <h1 id="h1" className="heading" style={customStyle}>
     {greeting.morning}
   </h1>,
   document.getElementById("root")
 );
 const heading = document.getElementById("h1");
 
-if (hour >= 0 && hour < 12) {
+if (hour < 12) {
   heading.innerText = greeting.morning;
-  heading.className = "heading morning";
-} else if (hour >= 12 && hour < 18) {
+  customStyle.color = 'red';
+} else if (hour < 18) {
   heading.innerText = greeting.afternoon;
-  heading.className = "heading afternoon";
-} else if (hour >= 18 && hour <= 23) {
+  customStyle.color = 'green'
+} else {
   heading.innerText = greeting.evening;
-  heading.className = "heading evening";
+  customStyle.color = 'blue'
 }
